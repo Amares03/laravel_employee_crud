@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import TableActionButtons from './TableActionButtons';
+
 
 
 class TableRow extends Component {
@@ -12,7 +13,9 @@ class TableRow extends Component {
                 <th>{this.props.data.id }</th>
                 <td>{this.props.data.employee_name }</td>
                 <td>{this.props.data.salary }</td>
-                <td>@me</td>
+                <td>
+                    <TableActionButtons eachRowId = {this.props.data.id}/>
+                </td>
             </tr>
         )
     }
