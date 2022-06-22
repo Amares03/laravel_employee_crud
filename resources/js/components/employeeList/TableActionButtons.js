@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ViewModel from './Models/ViewModel';
 import axios from 'axios';
+import ViewModel from './Models/ViewModel';
+import UpdateModal from './Models/UpdateModal';
 
 
 
@@ -43,9 +44,20 @@ class TableActionButtons extends Component {
                         <ViewModel modalId= {this.props.eachRowId} employeeData={ this.state }/>
 
 
+                    <button
+                     type="button" 
+                     className="btn btn-info"
+                      data-bs-toggle="modal" 
+                      data-bs-target={"#updateModal"+this.props.eachRowId}
+                      onClick={()=>{this.getEmployeeDetails(this.props.eachRowId)}}
+                     >
+                        Update
+                        </button>
+                        <UpdateModal modalId= {this.props.eachRowId} employeeData={ this.state }/>
 
 
-                    <button type="button" className="btn btn-info">Update</button>
+
+
                     <button type="button" className="btn btn-danger">Delete</button>
                 </div>
             
