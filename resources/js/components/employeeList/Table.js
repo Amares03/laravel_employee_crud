@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 
 class Table extends Component {
@@ -9,10 +10,19 @@ class Table extends Component {
             }
         }
 
-    // Get Employee List.
-    getEmployeeList = ()=>{
+        // Life cycle Method
+        componentDidMount(){
+            this.getEmployeeList();
+        }
 
-    }
+        // Get Employee List.
+        getEmployeeList = ()=>{
+                axios
+                .get('/get/employee/list')
+                .then(function (response){
+                    console.log(response)
+                })
+             }
 
 
 
@@ -23,7 +33,7 @@ class Table extends Component {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">
-                        <table class="table table-hover">
+                        <table className="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope='col' width='100px'>#</th>
