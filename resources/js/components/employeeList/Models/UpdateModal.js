@@ -33,9 +33,12 @@ class UpdateModal extends Component {
             employeeName: null,
             employeeSalary: null,
         }
-
+        
+        
+            
         if(current_state.employeeName !== props.employeeData.currentEmployeeName){
             employeeUpdate.employeeName = props.employeeData.currentEmployeeName;
+            console.log(props.employeeData.currentEmployeeName);
         }
         
         if(current_state.employeeSalary !== props.employeeData.currentEmployeeSalary){
@@ -66,6 +69,7 @@ class UpdateModal extends Component {
                                        id='employeeName'
                                        onChange={this.inputEmployeeName}
                                        value={this.state.employeeName ?? ""}
+                                       
                                 />
                             </div>
                             <div className='form-group'>
