@@ -3,6 +3,7 @@ import axios from 'axios';
 import TableRow from './TableRow';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CreateModal from './Models/CreateModal';
 
 
 class Table extends Component {
@@ -37,6 +38,7 @@ class Table extends Component {
         return (
         <div className="container">
             <ToastContainer/>
+            <CreateModal/>
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">

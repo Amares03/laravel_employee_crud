@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactTostify.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -96,6 +95,7 @@ class UpdateModal extends Component {
                             <div className='form-group'>
                                 <input type="text" 
                                        id='employeeName'
+                                        className='form-control mb-3'
                                        onChange={this.inputEmployeeName}
                                        value={this.state.employeeName ?? ""}
                                        
@@ -104,6 +104,7 @@ class UpdateModal extends Component {
                             <div className='form-group'>
                                 <input type="text" 
                                        id='employeeSalary'
+                                        className='form-control mb-3'
                                        onChange={this.inputEmployeeSalary}
                                        value={this.state.employeeSalary ?? ""}
                                 />
