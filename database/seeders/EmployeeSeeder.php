@@ -3,20 +3,18 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Employee;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class EmployeeSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        $this->call(EmployeeSeeder::class);
-
+        Employee::factory(100)->create();
     }
 }
