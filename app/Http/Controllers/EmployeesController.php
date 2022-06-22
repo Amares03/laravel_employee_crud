@@ -12,7 +12,7 @@ class EmployeesController extends Controller
     // Get employee list from database
     public function getEmployeeList(){
         try {
-            $employees = Employee::all();
+            $employees = Employee::orderBy('id','DESC')->get();
             return response()->json($employees);
         } catch (Exception $e) {
             Log::error($e);
