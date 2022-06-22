@@ -28,4 +28,27 @@ class EmployeesController extends Controller
             Log::error($e);
         }
     }
+
+
+    // updating employee data
+    public function updateEmployeeData(Request $request){
+        try {
+            $employeeId = $request->get('employeeId');
+            $employeeName = $request->get('employeeName');
+            $employeeSalary = $request->get('employeeSalary');
+
+             Employee::where('id',$employeeId)->update([
+                'employee_name' => $employeeName,
+                'salary'   => $employeeSalary
+            ]);
+
+            return response()->json([
+                'employee_name' => $employeeName,
+                'salary'   => $employeeSalary
+            ]);
+
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+    }
 }

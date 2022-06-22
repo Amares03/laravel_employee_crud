@@ -1,4 +1,8 @@
+import axios from 'axios';
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactTostify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -34,14 +38,29 @@ class UpdateModal extends Component {
             employeeSalary: null,
         }
         
-        
-            
-        if(current_state.employeeName !== props.employeeData.currentEmployeeName){
-            employeeUpdate.employeeName = props.employeeData.currentEmployeeName;
-            console.log(props.employeeData.currentEmployeeName);
+
+        // updating data from input
+
+        if(current_state.employeeName && (current_state.employeeName !== props.employeeData.currentEmployeeName)){
+            return null;
+        }
+        if(current_state.employeeSalary && (current_state.employeeSalary !== props.employeeData.currentEmployeeSalary)){
+            return null;
         }
         
-        if(current_state.employeeSalary !== props.employeeData.currentEmployeeSalary){
+
+
+        
+        //updating data from props
+
+        if(current_state.employeeName !== props.employeeData.currentEmployeeName || 
+            current_state.employeeName === props.employeeData.currentEmployeeName){
+            employeeUpdate.employeeName = props.employeeData.currentEmployeeName;
+            
+        }
+        
+        if(current_state.employeeSalary !== props.employeeData.currentEmployeeSalary || 
+            current_state.employeeSalary === props.employeeData.currentEmployeeSalary){
             employeeUpdate.employeeSalary = props.employeeData.currentEmployeeSalary;
         }
 
@@ -50,7 +69,17 @@ class UpdateModal extends Component {
 
     // Update employee data
     updateEmployeeData = ()=>{
-
+        axios.post('/update/employee/data',{
+            employeeId: this.props.modalId,
+            employeeName: this.state.employeeName,
+            employeeSalary: this.state.employeeSalary,
+        }).then((response)=>{
+            // console.log(response);
+            toast.success("Employee Updated successfully");
+            setTimeout(()=>{
+                location.reload();
+            },2500);
+        })
     }
 
     render(){
